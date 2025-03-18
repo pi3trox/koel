@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
-    && docker-php-ext-install zip pdo_mysql mbstring exif pcntl bcmath gd
+    libcurl4-openssl-dev \
+    libssl-dev \
+    && docker-php-ext-install zip pdo_mysql mbstring exif pcntl bcmath gd curl
 
 # Installa Node.js e npm
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
@@ -26,7 +28,7 @@ WORKDIR /app
 COPY . .
 
 # Installa le dipendenze PHP
-RUN composer.json install --ignore-platform-reqs
+RUN composer install --ignore-platform-reqs --no-scripts
 
 # Installa le dipendenze JavaScript
 RUN npm install
