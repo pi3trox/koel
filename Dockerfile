@@ -32,7 +32,6 @@ RUN composer install --ignore-platform-reqs --no-scripts
 
 # Installa le dipendenze JavaScript
 RUN npm install
-RUN npm run prod
 
 # Esponi la porta 8000 (usata da php artisan serve)
 EXPOSE 8000
