@@ -26,7 +26,7 @@ WORKDIR /app
 COPY . .
 
 # Installa le dipendenze PHP
-RUN composer install --ignore-platform-reqs
+RUN composer.json install --ignore-platform-reqs
 
 # Installa le dipendenze JavaScript
 RUN npm install
